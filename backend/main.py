@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from core.database import engine, Base
@@ -11,9 +12,16 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# CORS_ORIGINS можно задать через переменную окружения как список URL,
+# разделённых запятыми. По умолчанию разрешён локальный dev-сервер Vite.
+# Пример для production:
+#   CORS_ORIGINS=https://alezar-tutor.online,https://www.alezar-tutor.online
+cors_env = os.getenv("CORS_ORIGINS", "http://localhost:5173")
+cors_origins = [origin.strip() for origin in cors_env.split(",") if origin.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,6 +33,7 @@ app.include_router(lessons.router)
 app.include_router(grades.router)
 app.include_router(analytics.router)
 app.include_router(homeworks.router)
+
 
 @app.get("/")
 def root():
