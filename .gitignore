@@ -1,0 +1,61 @@
+# =========================
+#  Python / Backend
+# =========================
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/**/*.pyc
+backend/.pytest_cache/
+backend/.env
+backend/*.log
+
+# Обученные модели — отдельно решим, заливать или нет (см. ниже)
+backend/ml_models/
+
+# Отчёты валидации (большие графики, ничего не сломают, но и не нужны в репо)
+backend/reports/
+
+# =========================
+#  Frontend / Node
+# =========================
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/*.log
+frontend/.env
+frontend/.env.local
+
+# =========================
+#  IDE / OS
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# =========================
+#  Docker
+# =========================
+*.pid
+
+# =========================
+#  Database
+# =========================
+*.sqlite
+*.sqlite3
+*.db
+postgres-data/
+pgdata/
+
+# =========================
+#  Секреты (никогда не коммитим!)
+# =========================
+.env
+.env.local
+.env.production
+*.key
+*.pem
+secrets/
