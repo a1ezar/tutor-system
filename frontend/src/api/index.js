@@ -1,7 +1,13 @@
 import axios from 'axios'
 
+// VITE_API_URL подставляется при сборке frontend.
+// Локально (npm run dev) читается из frontend/.env.local
+// На проде — из переменных окружения Timeweb Cloud.
+// Если переменная не задана — fallback на localhost:8000 для разработки.
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+
 const api = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json'
   }
