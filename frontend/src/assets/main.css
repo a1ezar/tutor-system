@@ -3306,6 +3306,7 @@ div.auth-root {
 .auth-form-card {
   width: 100%;
   max-width: 420px;
+  text-align: left;
 }
 
 .auth-mobile-logo {
@@ -3342,11 +3343,13 @@ div.auth-root {
   color: #0f172a;
   letter-spacing: -0.02em;
   margin-bottom: 6px;
+  text-align: left;
 }
 .auth-subtitle {
   color: #64748b;
   font-size: 14px;
   margin-bottom: 28px;
+  text-align: left;
 }
 
 .auth-form .form-field {

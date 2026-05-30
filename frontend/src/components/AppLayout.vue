@@ -58,7 +58,8 @@
           <button @click="mobileOpen = !mobileOpen" class="mobile-menu-btn">
             <Bars3Icon />
           </button>
-          <h1 class="app-page-title">{{ pageTitle }}</h1>
+          <!-- Заголовок страницы намеренно убран: каждая страница рисует
+               свой собственный заголовок в контенте, в топбаре он дублировался. -->
         </div>
 
         <div class="app-header-right">

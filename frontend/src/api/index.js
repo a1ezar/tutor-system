@@ -27,8 +27,14 @@ api.interceptors.response.use(
   response => response,
   error => {
     if (error.response?.status === 401) {
-      localStorage.removeItem('token')
-      window.location.href = '/login'
+      const path = window.location.pathname
+      const onAuthPage = path === '/login' || path === '/register'
+      // Не выкидываем со страницы входа/регистрации: иначе 401 от /auth/me
+      // во время самого входа жёстко перезагружает страницу и ломает вход.
+      if (!onAuthPage) {
+        localStorage.removeItem('token')
+        window.location.href = '/login'
+      }
     }
     return Promise.reject(error)
   }
